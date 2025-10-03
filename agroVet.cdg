@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="agroVet">
+  <ClassDiagramComponents>
+    <Class name="Admin" package="" visibility="public" xPosition="29.0" yPosition="301.0">
+      <Fields>
+        <Field name="startDay" type="Date" visibility="private"/>
+        <Field name="finishDate" type="Date" visibility="private"/>
+        <Field name="status" type="Status" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Person " package="" visibility="public" xPosition="249.0" yPosition="30.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="phoneNumber" type="String" visibility="private"/>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="pet" type="Pet" visibility="private"/>
+        <Field name="adress" type="String" visibility="private"/>
+        <Field name="S" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Veterinarian" package="" visibility="public" xPosition="437.0" yPosition="444.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Product" package="" visibility="public" xPosition="701.0" yPosition="372.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+        <Field name="discount" type="float" visibility="private"/>
+        <Field name="tax" type="float" visibility="private"/>
+        <Field name="price" type="float" visibility="private"/>
+        <Field name="barCode" type="int" visibility="private"/>
+        <Field name="type" type="Type" visibility="private"/>
+        <Field name="category" type="Category" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Costumer " package="" visibility="public" xPosition="259.0" yPosition="527.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="Status" package="" visibility="public" xPosition="29.0" yPosition="555.0">
+      <Literals>
+        <Literal name="ACTIVE"/>
+        <Literal name="INACTIVE"/>
+      </Literals>
+    </Enum>
+    <Class name="Pet" package="" visibility="public" xPosition="502.0" yPosition="170.0">
+      <Fields>
+        <Field name="breed" type="String" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="species" type="String" visibility="private"/>
+        <Field name="weight" type="int" visibility="private"/>
+        <Field name="height" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Admin" target="Person "/>
+    <IsRelation name="is" source="Veterinarian" target="Person "/>
+    <IsRelation name="is" source="Costumer " target="Person "/>
+    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Person " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
