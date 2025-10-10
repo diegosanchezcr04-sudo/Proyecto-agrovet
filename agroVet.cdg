@@ -23,8 +23,13 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Veterinarian" package="" visibility="public" xPosition="509.0" yPosition="547.0">
-      <Fields/>
+    <Class name="Veterinarian" package="" visibility="public" xPosition="650.0" yPosition="568.0">
+      <Fields>
+        <Field name="specialty" type="String" visibility="private"/>
+        <Field name="degree" type="String" visibility="private"/>
+        <Field name="certification" type="String" visibility="private"/>
+        <Field name="historyPatients" type="int" visibility="private"/>
+      </Fields>
       <Constructors/>
       <Methods/>
     </Class>
@@ -43,14 +48,15 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Costumer " package="" visibility="public" xPosition="271.0" yPosition="511.0">
+    <Class name="Costumer " package="" visibility="public" xPosition="465.0" yPosition="510.0">
       <Fields>
         <Field name="pet" type="Pet" visibility="private"/>
+        <Field name="appoinment" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Pet" package="" visibility="public" xPosition="83.0" yPosition="630.0">
+    <Class name="Pet" package="" visibility="public" xPosition="241.0" yPosition="510.0">
       <Fields>
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -61,18 +67,16 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="Status" package="" visibility="public" xPosition="64.0" yPosition="431.0">
-      <Literals>
-        <Literal name="ACTIVE"/>
-        <Literal name="INACTIVE"/>
-      </Literals>
-    </Enum>
-    <Class name="Schedule" package="" visibility="public" xPosition="381.0" yPosition="701.0">
-      <Fields/>
+    <Class name="Schedule" package="" visibility="public" xPosition="64.0" yPosition="704.0">
+      <Fields>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="startTime" type="String" visibility="private"/>
+        <Field name="finishTime" type="String" visibility="private"/>
+      </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Invoice" package="" visibility="public" xPosition="724.0" yPosition="541.0">
+    <Class name="Invoice" package="" visibility="public" xPosition="839.0" yPosition="554.0">
       <Fields>
         <Field name="id" type="String" visibility="private"/>
         <Field name="issueDate" type="Date" visibility="private"/>
@@ -82,12 +86,17 @@
         <Field name="cashier" type="Cashier" visibility="private"/>
         <Field name="listItems" type="String[]" visibility="private"/>
         <Field name="animalTreated" type="String" visibility="private"/>
-        <Field name="untitledField" type="Object" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="Category" package="" visibility="public" xPosition="1075.0" yPosition="243.0">
+    <Enum name="Status" package="" visibility="public" xPosition="18.0" yPosition="412.0">
+      <Literals>
+        <Literal name="ACTIVE"/>
+        <Literal name="INACTIVE"/>
+      </Literals>
+    </Enum>
+    <Enum name="Category" package="" visibility="public" xPosition="1097.0" yPosition="207.0">
       <Literals>
         <Literal name="VERINARY_MEDICINE"/>
         <Literal name="PET_FOOD"/>
@@ -111,12 +120,15 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="Costumer " target="Person "/>
-    <HasRelation name="Has" source="Costumer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Admin" target="Person "/>
-    <UseRelation name="Use" source="Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
     <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Costumer " target="Person "/>
     <IsRelation name="is" source="Veterinarian" target="Person "/>
+    <IsRelation name="is" source="Admin" target="Person "/>
+    <HasRelation name="Has" source="Schedule" target="Admin" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Schedule" target="Veterinarian" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Product" target="Category" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Costumer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Type" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
