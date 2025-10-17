@@ -2,7 +2,7 @@
 
 <ClassDiagram name="agroVet">
   <ClassDiagramComponents>
-    <Class name="Admin" package="" visibility="public" xPosition="146.0" yPosition="215.0">
+    <Class name="Admin" package="" visibility="public" xPosition="268.0" yPosition="58.0">
       <Fields>
         <Field name="startDay" type="Date" visibility="private"/>
         <Field name="finishDate" type="Date" visibility="private"/>
@@ -11,24 +11,43 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Person " package="" visibility="public" xPosition="429.0" yPosition="158.0">
+    <Class name="&lt;&lt;abstract&gt;&gt;Person " package="" visibility="public" xPosition="635.0" yPosition="117.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="phoneNumber" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
         <Field name="email" type="String" visibility="private"/>
-        <Field name="pet" type="Pet" visibility="private"/>
         <Field name="adress" type="String" visibility="private"/>
+        <Field name="registrationDate" type="Date" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="getRole" returnType="String" visibility="public"/>
+        <Method name="getDiscountRate" returnType="float" visibility="public"/>
+        <Method name="generateReport" returnType="String" visibility="public"/>
+        <Method name="validateData" returnType="boolean" visibility="public"/>
+        <Method name="updateContactInfo" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
     </Class>
-    <Class name="Veterinarian" package="" visibility="public" xPosition="509.0" yPosition="547.0">
-      <Fields/>
+    <Class name="Veterinarian" package="" visibility="public" xPosition="366.0" yPosition="797.0">
+      <Fields>
+        <Field name="licenseNumber" type="String" visibility="private"/>
+        <Field name="specialty" type="String" visibility="private"/>
+        <Field name="maxDailyAppointments" type="byte" visibility="private"/>
+        <Field name="availableSlots" type="String[]" visibility="private"/>
+        <Field name="untitledField" type="Object" visibility="private"/>
+      </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="scheduleAppointment" returnType="boolean" visibility="public"/>
+        <Method name="cancelAppointment" returnType="boolean" visibility="public"/>
+        <Method name="prescribeTreatment" returnType="boolean" visibility="public"/>
+        <Method name="updateMedicalRecord" returnType="void" visibility="public"/>
+        <Method name="getAvailableTimeSlots" returnType="String[]" visibility="public"/>
+      </Methods>
     </Class>
-    <Class name="Product" package="" visibility="public" xPosition="750.0" yPosition="158.0">
+    <Class name="Product" package="" visibility="public" xPosition="936.0" yPosition="102.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
@@ -43,14 +62,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Costumer " package="" visibility="public" xPosition="271.0" yPosition="511.0">
-      <Fields>
-        <Field name="pet" type="Pet" visibility="private"/>
-      </Fields>
-      <Constructors/>
-      <Methods/>
-    </Class>
-    <Class name="Pet" package="" visibility="public" xPosition="83.0" yPosition="630.0">
+    <Class name="Pet" package="" visibility="public" xPosition="675.0" yPosition="872.0">
       <Fields>
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -61,18 +73,12 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="Status" package="" visibility="public" xPosition="64.0" yPosition="431.0">
-      <Literals>
-        <Literal name="ACTIVE"/>
-        <Literal name="INACTIVE"/>
-      </Literals>
-    </Enum>
-    <Class name="Schedule" package="" visibility="public" xPosition="381.0" yPosition="701.0">
+    <Class name="Schedule" package="" visibility="public" xPosition="56.0" yPosition="614.0">
       <Fields/>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Invoice" package="" visibility="public" xPosition="724.0" yPosition="541.0">
+    <Class name="Invoice" package="" visibility="public" xPosition="936.0" yPosition="493.0">
       <Fields>
         <Field name="id" type="String" visibility="private"/>
         <Field name="issueDate" type="Date" visibility="private"/>
@@ -87,7 +93,13 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="Category" package="" visibility="public" xPosition="1075.0" yPosition="243.0">
+    <Enum name="Status" package="" visibility="public" xPosition="83.0" yPosition="356.0">
+      <Literals>
+        <Literal name="ACTIVE"/>
+        <Literal name="INACTIVE"/>
+      </Literals>
+    </Enum>
+    <Enum name="Category" package="" visibility="public" xPosition="1295.0" yPosition="117.0">
       <Literals>
         <Literal name="VERINARY_MEDICINE"/>
         <Literal name="PET_FOOD"/>
@@ -99,7 +111,7 @@
         <Literal name="PETS "/>
       </Literals>
     </Enum>
-    <Enum name="Type" package="" visibility="public" xPosition="1026.0" yPosition="530.0">
+    <Enum name="Type" package="" visibility="public" xPosition="1155.0" yPosition="551.0">
       <Literals>
         <Literal name="ANTIBIOTIC, VACCINE, PARASITICIDE, ANALGESIC, VITAMIN_SUPPLEMENT,"/>
         <Literal name="DOG_FOOD, CAT_FOOD, BIRD_FOOD, FISH_FOOD, PET_TREATS,"/>
@@ -109,14 +121,51 @@
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
       </Literals>
     </Enum>
+    <Class name="Customer" package="" visibility="public" xPosition="648.0" yPosition="527.0">
+      <Fields>
+        <Field name="totalPurchases" type="float" visibility="private"/>
+        <Field name="purchaseHistory" type="Invoice" visibility="private"/>
+        <Field name="pets" type="Pet[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addPet" returnType="boolean" visibility="public"/>
+        <Method name="removePet" returnType="boolean" visibility="public"/>
+        <Method name="getPets" returnType="Pet[]" visibility="public"/>
+        <Method name="makePurchase" returnType="Invoice" visibility="public"/>
+        <Method name="getPurchaseHistory" returnType="Invoice" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Employee" package="" visibility="public" xPosition="348.0" yPosition="302.0">
+      <Fields>
+        <Field name="hireDate" type="Date" visibility="private"/>
+        <Field name="workingStation" type="Employee" visibility="private"/>
+        <Field name="salary" type="float" visibility="private"/>
+        <Field name="departament" type="Employee" visibility="private"/>
+        <Field name="status" type="Status" visibility="private"/>
+        <Field name="schedule" type="Schedule" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calculateSiniority" returnType="byte" visibility="public"/>
+        <Method name="loginSystem" returnType="boolean" visibility="public"/>
+        <Method name="logoutSystem" returnType="void" visibility="public"/>
+        <Method name="updateSchedule" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="Costumer " target="Person "/>
-    <HasRelation name="Has" source="Costumer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Admin" target="Person "/>
-    <UseRelation name="Use" source="Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
-    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Veterinarian" target="Employee"/>
+    <HasRelation name="Has" source="Customer" target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Veterinarian" target="Person "/>
+    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Schedule" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Product" target="Category" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Customer" target="&lt;&lt;abstract&gt;&gt;Person "/>
+    <HasRelation name="Has" source="Customer" target="Invoice" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Employee" target="&lt;&lt;abstract&gt;&gt;Person "/>
+    <UseRelation name="Use" source="&lt;&lt;abstract&gt;&gt;Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
