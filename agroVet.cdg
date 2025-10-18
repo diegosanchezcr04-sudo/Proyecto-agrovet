@@ -2,7 +2,7 @@
 
 <ClassDiagram name="agroVet">
   <ClassDiagramComponents>
-    <Class name="Administrator" package="" visibility="public" xPosition="212.0" yPosition="32.0">
+    <Class name="Administrator" package="" visibility="public" xPosition="216.0" yPosition="51.0">
       <Fields>
         <Field name="startDay" type="Date" visibility="private"/>
         <Field name="finishDate" type="Date" visibility="private"/>
@@ -20,7 +20,7 @@
         <Method name="backupDatabase" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="&lt;&lt;abstract&gt;&gt;Person " package="" visibility="public" xPosition="555.0" yPosition="23.0">
+    <Class name="&lt;&lt;abstract&gt;&gt;Person " package="" visibility="public" xPosition="546.0" yPosition="42.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="phoneNumber" type="String" visibility="private"/>
@@ -39,13 +39,12 @@
         <Method name="toString" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Veterinarian" package="" visibility="public" xPosition="104.0" yPosition="750.0">
+    <Class name="Veterinarian" package="" visibility="public" xPosition="400.0" yPosition="813.0">
       <Fields>
         <Field name="licenseNumber" type="String" visibility="private"/>
         <Field name="specialty" type="String" visibility="private"/>
         <Field name="maxDailyAppointments" type="byte" visibility="private"/>
         <Field name="availableSlots" type="String[]" visibility="private"/>
-        <Field name="untitledField" type="Object" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -53,10 +52,11 @@
         <Method name="cancelAppointment" returnType="boolean" visibility="public"/>
         <Method name="prescribeTreatment" returnType="boolean" visibility="public"/>
         <Method name="updateMedicalRecord" returnType="void" visibility="public"/>
-        <Method name="getAvailableTimeSlots" returnType="String[]" visibility="public"/>
+        <Method name="getAvailableSlots" returnType="String[]" visibility="public"/>
+        <Method name="isSlotAvailable" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Product" package="" visibility="public" xPosition="1580.0" yPosition="380.0">
+    <Class name="Product" package="" visibility="public" xPosition="1511.0" yPosition="325.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
@@ -71,7 +71,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Pet" package="" visibility="public" xPosition="701.0" yPosition="435.0">
+    <Class name="Pet" package="" visibility="public" xPosition="688.0" yPosition="421.0">
       <Fields>
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -82,12 +82,25 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Schedule" package="" visibility="public" xPosition="104.0" yPosition="597.0">
-      <Fields/>
+    <Class name="Schedule" package="" visibility="public" xPosition="69.0" yPosition="662.0">
+      <Fields>
+        <Field name="day" type="WorkingDay" visibility="private"/>
+        <Field name="isWorkingDay" type="boolean" visibility="private"/>
+        <Field name="scheduleType" type="String" visibility="private"/>
+        <Field name="startTime" type="Time" visibility="private"/>
+        <Field name="endTime" type="Time" visibility="private"/>
+        <Field name="startBreakTime" type="Time" visibility="private"/>
+        <Field name="endBreakTime" type="Time" visibility="private"/>
+      </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="calculateWorkingHours" returnType="byte" visibility="public"/>
+        <Method name="verifyiAvailable" returnType="boolean" visibility="public"/>
+        <Method name="updateSchedule" returnType="void" visibility="public"/>
+        <Method name="validateSchedule" returnType="boolean" visibility="public"/>
+      </Methods>
     </Class>
-    <Class name="Invoice" package="" visibility="public" xPosition="743.0" yPosition="705.0">
+    <Class name="Invoice" package="" visibility="public" xPosition="981.0" yPosition="791.0">
       <Fields>
         <Field name="id" type="String" visibility="private"/>
         <Field name="issueDate" type="Date" visibility="private"/>
@@ -102,7 +115,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Customer" package="" visibility="public" xPosition="962.0" yPosition="419.0">
+    <Class name="Customer" package="" visibility="public" xPosition="945.0" yPosition="394.0">
       <Fields>
         <Field name="totalPurchases" type="float" visibility="private"/>
         <Field name="purchaseHistory" type="Invoice" visibility="private"/>
@@ -117,12 +130,12 @@
         <Method name="getPurchaseHistory" returnType="Invoice" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Employee" package="" visibility="public" xPosition="453.0" yPosition="432.0">
+    <Class name="Employee" package="" visibility="public" xPosition="420.0" yPosition="451.0">
       <Fields>
         <Field name="hireDate" type="Date" visibility="private"/>
-        <Field name="workingStation" type="Employee" visibility="private"/>
+        <Field name="workingStation" type="String" visibility="private"/>
         <Field name="salary" type="float" visibility="private"/>
-        <Field name="departament" type="Employee" visibility="private"/>
+        <Field name="departament" type="String" visibility="private"/>
         <Field name="status" type="Status" visibility="private"/>
         <Field name="schedule" type="Schedule" visibility="private"/>
       </Fields>
@@ -134,13 +147,15 @@
         <Method name="updateSchedule" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Enum name="Status" package="" visibility="public" xPosition="104.0" yPosition="420.0">
+    <Enum name="Status" package="" visibility="public" xPosition="69.0" yPosition="451.0">
       <Literals>
         <Literal name="ACTIVE"/>
         <Literal name="INACTIVE"/>
+        <Literal name="ON_LEAVE"/>
+        <Literal name="SUSPENDED"/>
       </Literals>
     </Enum>
-    <Enum name="Category" package="" visibility="public" xPosition="929.0" yPosition="12.0">
+    <Enum name="Category" package="" visibility="public" xPosition="945.0" yPosition="32.0">
       <Literals>
         <Literal name="VERINARY_MEDICINE"/>
         <Literal name="PET_FOOD"/>
@@ -152,7 +167,7 @@
         <Literal name="PETS "/>
       </Literals>
     </Enum>
-    <Enum name="Type" package="" visibility="public" xPosition="1236.0" yPosition="67.0">
+    <Enum name="Type" package="" visibility="public" xPosition="1225.0" yPosition="51.0">
       <Literals>
         <Literal name="ANTIBIOTIC, VACCINE, PARASITICIDE, ANALGESIC, VITAMIN_SUPPLEMENT,"/>
         <Literal name="DOG_FOOD, CAT_FOOD, BIRD_FOOD, FISH_FOOD, PET_TREATS,"/>
@@ -162,11 +177,10 @@
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
       </Literals>
     </Enum>
-    <Class name="Cashier" package="" visibility="public" xPosition="453.0" yPosition="796.0">
+    <Class name="Cashier" package="" visibility="public" xPosition="662.0" yPosition="820.0">
       <Fields>
         <Field name="dailySalesCount" type="byte" visibility="private"/>
         <Field name="dailySalesTotal" type="float" visibility="private"/>
-        <Field name="untitledField" type="Object" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods>
@@ -176,8 +190,18 @@
         <Method name="cancelTransaction" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
+    <Enum name="WorkingDay" package="" visibility="public" xPosition="84.0" yPosition="1007.0">
+      <Literals>
+        <Literal name="MONDAY"/>
+        <Literal name="TUESDAY"/>
+        <Literal name="WEDNESDAY"/>
+        <Literal name="THURDAY"/>
+        <Literal name="FRIDAY"/>
+      </Literals>
+    </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <HasRelation name="Has" source="Schedule" target="WorkingDay" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <IsRelation name="is" source="Customer" target="&lt;&lt;abstract&gt;&gt;Person "/>
     <IsRelation name="is" source="Employee" target="&lt;&lt;abstract&gt;&gt;Person "/>
     <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
@@ -185,7 +209,7 @@
     <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="Use" source="&lt;&lt;abstract&gt;&gt;Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
     <HasRelation name="Has" source="Customer" target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Employee" target="Schedule" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <IsRelation name="is" source="Veterinarian" target="Employee"/>
     <HasRelation name="has" source="Administrator" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <IsRelation name="is" source="Cashier" target="Employee"/>
