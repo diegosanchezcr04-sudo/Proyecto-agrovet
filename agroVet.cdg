@@ -48,7 +48,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Costumer " package="" visibility="public" xPosition="425.0" yPosition="462.0">
+    <Class name="Customer " package="" visibility="public" xPosition="425.0" yPosition="462.0">
       <Fields>
         <Field name="pet" type="Pet" visibility="private"/>
         <Field name="appoinment" type="String" visibility="private"/>
@@ -56,16 +56,19 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Pet" package="" visibility="public" xPosition="425.0" yPosition="650.0">
+    <Class name="Pet" package="" visibility="public" xPosition="425.0" yPosition="655.0">
       <Fields>
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
         <Field name="species" type="String" visibility="private"/>
-        <Field name="weight" type="int" visibility="private"/>
-        <Field name="height" type="int" visibility="private"/>
+        <Field name="weight" type="double" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="addAppointment" returnType="void" visibility="public"/>
+        <Method name="showMedicalHistory" returnType="void" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Schedule" package="" visibility="public" xPosition="93.0" yPosition="704.0">
       <Fields>
@@ -118,18 +121,64 @@
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
       </Literals>
     </Enum>
+    <Class name="Appointment" package="" visibility="public" xPosition="425.0" yPosition="939.0">
+      <Fields>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="time" type="String" visibility="private"/>
+        <Field name="reason" type="String" visibility="private"/>
+        <Field name="status" type="Status" visibility="private"/>
+        <Field name="pet" type="Pet" visibility="private"/>
+        <Field name="service" type="Service" visibility="private"/>
+        <Field name="veterinarian" type="Veterinarian" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registerAppointment" returnType="void" visibility="public"/>
+        <Method name="cancelAppointment" returnType="void" visibility="public"/>
+        <Method name="showAppointment" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MedicalRecord" package="" visibility="public" xPosition="792.0" yPosition="742.0">
+      <Fields>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="diagnosis" type="String" visibility="private"/>
+        <Field name="treatment" type="String" visibility="private"/>
+        <Field name="pet" type="Pet" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addTreatment" returnType="void" visibility="public"/>
+        <Method name="showMedicalHistory" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Service" package="" visibility="public" xPosition="762.0" yPosition="1034.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="cost" type="double" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="showServices" returnType="void" visibility="public"/>
+        <Method name="calculateTotalCost" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Costumer " target="Person "/>
     <IsRelation name="is" source="Veterinarian" target="Person "/>
-    <IsRelation name="is" source="Admin" target="Person "/>
-    <HasRelation name="has" source="Veterinarian" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="Invoice" target="Person " type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="has" source="Admin" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Product" target="Category" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Costumer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="has" source="Veterinarian" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Pet" target="Appointment" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="has" source="Appointment" target="Service" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
     <HasRelation name="Has" source="Product" target="Type" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Pet" target="MedicalRecord" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Customer " target="Person "/>
+    <HasRelation name="has" source="Invoice" target="Person " type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Category" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Admin" target="Person "/>
+    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Customer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="has" source="Pet" target="Customer " type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
