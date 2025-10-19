@@ -56,7 +56,7 @@
         <Method name="isSlotAvailable" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Product" package="" visibility="public" xPosition="1511.0" yPosition="325.0">
+    <Class name="Product" package="" visibility="public" xPosition="1401.0" yPosition="318.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
@@ -67,9 +67,21 @@
         <Field name="barCode" type="int" visibility="private"/>
         <Field name="type" type="Type" visibility="private"/>
         <Field name="category" type="Category" visibility="private"/>
+        <Field name="stockQuantity" type="int" visibility="private"/>
+        <Field name="expirationDate" type="Date" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="isExpired" returnType="boolean" visibility="public"/>
+        <Method name="reduceStock" returnType="int" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="increaseStock" returnType="int" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+        <Method name="isInStock" returnType="boolean" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Pet" package="" visibility="public" xPosition="688.0" yPosition="421.0">
       <Fields>
@@ -147,6 +159,19 @@
         <Method name="updateSchedule" returnType="void" visibility="public"/>
       </Methods>
     </Class>
+    <Class name="Cashier" package="" visibility="public" xPosition="662.0" yPosition="820.0">
+      <Fields>
+        <Field name="dailySalesCount" type="byte" visibility="private"/>
+        <Field name="dailySalesTotal" type="float" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="processSale" returnType="Invoice" visibility="public"/>
+        <Method name="applyDiscoun" returnType="void" visibility="public"/>
+        <Method name="generateDailyReport" returnType="String" visibility="public"/>
+        <Method name="cancelTransaction" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
     <Enum name="Status" package="" visibility="public" xPosition="69.0" yPosition="451.0">
       <Literals>
         <Literal name="ACTIVE"/>
@@ -177,19 +202,6 @@
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
       </Literals>
     </Enum>
-    <Class name="Cashier" package="" visibility="public" xPosition="662.0" yPosition="820.0">
-      <Fields>
-        <Field name="dailySalesCount" type="byte" visibility="private"/>
-        <Field name="dailySalesTotal" type="float" visibility="private"/>
-      </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="processSale" returnType="Invoice" visibility="public"/>
-        <Method name="applyDiscoun" returnType="void" visibility="public"/>
-        <Method name="generateDailyReport" returnType="String" visibility="public"/>
-        <Method name="cancelTransaction" returnType="boolean" visibility="public"/>
-      </Methods>
-    </Class>
     <Enum name="WorkingDay" package="" visibility="public" xPosition="84.0" yPosition="1007.0">
       <Literals>
         <Literal name="MONDAY"/>
@@ -199,23 +211,30 @@
         <Literal name="FRIDAY"/>
       </Literals>
     </Enum>
+    <Class name="Inventory" package="" visibility="public" xPosition="1416.0" yPosition="813.0">
+      <Fields>
+        <Field name="untitledField" type="Object" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="Has" source="Schedule" target="WorkingDay" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Customer" target="&lt;&lt;abstract&gt;&gt;Person "/>
-    <IsRelation name="is" source="Employee" target="&lt;&lt;abstract&gt;&gt;Person "/>
-    <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Customer" target="Invoice" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="Use" source="&lt;&lt;abstract&gt;&gt;Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
     <HasRelation name="Has" source="Customer" target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Employee" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Veterinarian" target="Employee"/>
-    <HasRelation name="has" source="Administrator" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Cashier" target="Employee"/>
-    <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Product" target="Category" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Administrator" target="Employee"/>
+    <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <UseRelation name="Use" source="Employee" target="Invoice" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <IsRelation name="is" source="Administrator" target="Employee"/>
+    <IsRelation name="is" source="Veterinarian" target="Employee"/>
+    <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Category" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Cashier" target="Employee"/>
+    <HasRelation name="Has" source="Schedule" target="WorkingDay" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Employee" target="&lt;&lt;abstract&gt;&gt;Person "/>
+    <HasRelation name="Has" source="Customer" target="Invoice" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Customer" target="&lt;&lt;abstract&gt;&gt;Person "/>
+    <UseRelation name="Use" source="&lt;&lt;abstract&gt;&gt;Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <HasRelation name="has" source="Administrator" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
