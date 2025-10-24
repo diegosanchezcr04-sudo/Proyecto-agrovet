@@ -7,9 +7,18 @@
         <Field name="startDay" type="Date" visibility="private"/>
         <Field name="finishDate" type="Date" visibility="private"/>
         <Field name="status" type="Status" visibility="private"/>
+        <Field name="accessLevel" type="String" visibility="private"/>
+        <Field name="managedDepartments" type="String[]" visibility="private"/>
+        <Field name="systemModifier" type="boolean" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="addEmployee" returnType="boolean" visibility="public"/>
+        <Method name="removeEmployee" returnType="boolean" visibility="public"/>
+        <Method name="generateFinancialReport" returnType="String" visibility="public"/>
+        <Method name="updateSystemSettings" returnType="void" visibility="public"/>
+        <Method name="backupDatabase" returnType="boolean" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Person " package="" visibility="public" xPosition="251.0" yPosition="143.0">
       <Fields>
@@ -17,11 +26,18 @@
         <Field name="phoneNumber" type="String" visibility="private"/>
         <Field name="id" type="String" visibility="private"/>
         <Field name="email" type="String" visibility="private"/>
-        <Field name="pet" type="Pet" visibility="private"/>
         <Field name="adress" type="String" visibility="private"/>
+        <Field name="registrationDate" type="Date" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="getRole" returnType="String" visibility="public"/>
+        <Method name="getDiscountRate" returnType="float" visibility="public"/>
+        <Method name="generateReport" returnType="String" visibility="public"/>
+        <Method name="validateData" returnType="boolean" visibility="public"/>
+        <Method name="updateContactInfo" returnType="void" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Veterinarian" package="" visibility="public" xPosition="235.0" yPosition="459.0">
       <Fields>
@@ -31,7 +47,14 @@
         <Field name="historyPatients" type="int" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="scheduleAppointment" returnType="boolean" visibility="public"/>
+        <Method name="cancelAppointment" returnType="boolean" visibility="public"/>
+        <Method name="prescribeTreatment" returnType="boolean" visibility="public"/>
+        <Method name="updateMedicalRecord" returnType="void" visibility="public"/>
+        <Method name="getAvailableSlots" returnType="String[]" visibility="public"/>
+        <Method name="isSlotAvailable" returnType="boolean" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Product" package="" visibility="public" xPosition="839.0" yPosition="143.0">
       <Fields>
@@ -44,6 +67,9 @@
         <Field name="barCode" type="int" visibility="private"/>
         <Field name="type" type="Type" visibility="private"/>
         <Field name="category" type="Category" visibility="private"/>
+        <Field name="stockQuantity" type="int" visibility="private"/>
+        <Field name="expirationDate" type="Date" visibility="private"/>
+        <Field name="startDay" type="Date" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
@@ -74,7 +100,12 @@
         <Field name="finishTime" type="String" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="calculateWorkingHours" returnType="byte" visibility="public"/>
+        <Method name="verifyiAvailable" returnType="boolean" visibility="public"/>
+        <Method name="updateSchedule" returnType="void" visibility="public"/>
+        <Method name="validateSchedule" returnType="boolean" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Invoice" package="" visibility="public" xPosition="595.0" yPosition="167.0">
       <Fields>
@@ -116,6 +147,15 @@
         <Literal name="  COLLAR, LEASH, FEEDER, PET_BED, PET_TOY,"/>
         <Literal name=" SEEDS, FERTILIZER, PESTICIDE, AGRO_TOOLS,"/>
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
+      </Literals>
+    </Enum>
+    <Enum name="WorkingDay" package="" visibility="public" xPosition="84.0" yPosition="1007.0">
+      <Literals>
+        <Literal name="MONDAY"/>
+        <Literal name="TUESDAY"/>
+        <Literal name="WEDNESDAY"/>
+        <Literal name="THURDAY"/>
+        <Literal name="FRIDAY"/>
       </Literals>
     </Enum>
   </ClassDiagramComponents>
