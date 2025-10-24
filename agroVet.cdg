@@ -20,7 +20,7 @@
         <Method name="backupDatabase" returnType="boolean" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="&lt;&lt;abstract&gt;&gt;Person " package="" visibility="public" xPosition="546.0" yPosition="42.0">
+    <Class name="Person " package="" visibility="public" isAbstract="true" xPosition="546.0" yPosition="42.0">
       <Fields>
         <Field name="name" type="String" visibility="private"/>
         <Field name="phoneNumber" type="String" visibility="private"/>
@@ -244,22 +244,22 @@
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="has" source="Administrator" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Cashier" target="Employee"/>
-    <HasRelation name="has" source="Inventory" target="Product" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Customer" target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Schedule" target="WorkingDay" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Category" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Employee" target="Person "/>
     <IsRelation name="is" source="Veterinarian" target="Employee"/>
     <HasRelation name="has" source="Invoice" target="Customer" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="has" source="Invoice" target="Product" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Product" target="Category" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <UseRelation name="Use" source="&lt;&lt;abstract&gt;&gt;Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
-    <HasRelation name="Has" source="Employee" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="Has" source="Schedule" target="WorkingDay" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <IsRelation name="is" source="Customer" target="&lt;&lt;abstract&gt;&gt;Person "/>
-    <IsRelation name="is" source="Administrator" target="Employee"/>
-    <IsRelation name="is" source="Employee" target="&lt;&lt;abstract&gt;&gt;Person "/>
-    <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Inventory" target="Product" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <UseRelation name="Use" source="Employee" target="Invoice" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <HasRelation name="has" source="Invoice" target="Product" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Type" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="Use" source="Person " target="Product" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <IsRelation name="is" source="Cashier" target="Employee"/>
+    <HasRelation name="Has" source="Customer" target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Employee" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <IsRelation name="is" source="Customer" target="Person "/>
+    <HasRelation name="has" source="Administrator" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Employee" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Administrator" target="Employee"/>
   </ClassDiagramRelations>
 </ClassDiagram>
