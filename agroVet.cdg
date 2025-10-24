@@ -87,11 +87,14 @@
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
         <Field name="species" type="String" visibility="private"/>
-        <Field name="weight" type="int" visibility="private"/>
-        <Field name="height" type="int" visibility="private"/>
+        <Field name="weight" type="double" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
       </Fields>
       <Constructors/>
-      <Methods/>
+      <Methods>
+        <Method name="addAppointment" returnType="void" visibility="public"/>
+        <Method name="showMedicalHistory" returnType="void" visibility="public"/>
+      </Methods>
     </Class>
     <Class name="Schedule" package="" visibility="public" xPosition="93.0" yPosition="704.0">
       <Fields>
@@ -149,15 +152,48 @@
         <Literal name="PET_SHAMPOO, DISINFECTANT, FLEA_CONTROL"/>
       </Literals>
     </Enum>
-    <Enum name="WorkingDay" package="" visibility="public" xPosition="84.0" yPosition="1007.0">
-      <Literals>
-        <Literal name="MONDAY"/>
-        <Literal name="TUESDAY"/>
-        <Literal name="WEDNESDAY"/>
-        <Literal name="THURDAY"/>
-        <Literal name="FRIDAY"/>
-      </Literals>
-    </Enum>
+    <Class name="Appointment" package="" visibility="public" xPosition="425.0" yPosition="939.0">
+      <Fields>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="time" type="String" visibility="private"/>
+        <Field name="reason" type="String" visibility="private"/>
+        <Field name="status" type="Status" visibility="private"/>
+        <Field name="pet" type="Pet" visibility="private"/>
+        <Field name="service" type="Service" visibility="private"/>
+        <Field name="veterinarian" type="Veterinarian" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="registerAppointment" returnType="void" visibility="public"/>
+        <Method name="cancelAppointment" returnType="void" visibility="public"/>
+        <Method name="showAppointment" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MedicalRecord" package="" visibility="public" xPosition="792.0" yPosition="742.0">
+      <Fields>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="diagnosis" type="String" visibility="private"/>
+        <Field name="treatment" type="String" visibility="private"/>
+        <Field name="pet" type="Pet" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="addTreatment" returnType="void" visibility="public"/>
+        <Method name="showMedicalHistory" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Service" package="" visibility="public" xPosition="762.0" yPosition="1034.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="cost" type="double" visibility="private"/>
+        <Field name="description" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="showServices" returnType="void" visibility="public"/>
+        <Method name="calculateTotalCost" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
     <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
