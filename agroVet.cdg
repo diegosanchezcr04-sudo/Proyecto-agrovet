@@ -74,7 +74,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Customer " package="" visibility="public" xPosition="425.0" yPosition="462.0">
+    <Class name="Costumer " package="" visibility="public" xPosition="425.0" yPosition="462.0">
       <Fields>
         <Field name="pet" type="Pet" visibility="private"/>
         <Field name="appoinment" type="String" visibility="private"/>
@@ -82,7 +82,7 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Pet" package="" visibility="public" xPosition="425.0" yPosition="655.0">
+    <Class name="Pet" package="" visibility="public" xPosition="425.0" yPosition="650.0">
       <Fields>
         <Field name="breed" type="String" visibility="private"/>
         <Field name="name" type="String" visibility="private"/>
@@ -196,20 +196,16 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
+    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Costumer " target="Person "/>
     <IsRelation name="is" source="Veterinarian" target="Person "/>
+    <IsRelation name="is" source="Admin" target="Person "/>
+    <HasRelation name="has" source="Veterinarian" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="has" source="Invoice" target="Person " type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="has" source="Admin" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="has" source="Product" target="Invoice" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="Veterinarian" target="Schedule" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="Pet" target="Appointment" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="has" source="Appointment" target="Service" type="Aggregation" sourceCardinality="0..1" targetCardinality="0..*" collectionType="List"/>
-    <HasRelation name="Has" source="Product" target="Type" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="Pet" target="MedicalRecord" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Customer " target="Person "/>
-    <HasRelation name="has" source="Invoice" target="Person " type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
     <HasRelation name="Has" source="Product" target="Category" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="Admin" target="Person "/>
-    <HasRelation name="has" source="Admin" target="Status" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="Has" source="Customer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
-    <HasRelation name="has" source="Pet" target="Customer " type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="Has" source="Costumer " target="Pet" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="Has" source="Product" target="Type" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
